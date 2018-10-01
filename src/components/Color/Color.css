@@ -1,0 +1,43 @@
+.Color {
+  height: 25%;
+  flex-basis: 20%;
+  height: 120px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Color__rating {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  background: #ffffff4d;
+  border-bottom-left-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+}
+.Color__copy {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.5rem;
+  border: 2px solid #fff9;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.Color:hover .Color__copy {
+  opacity: 1;
+}
+
+.Color__title {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  color: #fff;
+  font-weight: 200;
+}
