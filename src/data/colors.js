@@ -14,7 +14,7 @@ const colors = [
   {
     id: 'a11e3995-b0bd-4d58-8c48-5e49ae7f7f23',
     title: 'bright red',
-    color: '#ff0000',
+    color: '#e02727',
     rating: 0
   }
 ];
