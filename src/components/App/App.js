@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ColorList from '../ColorLIst/ColorList';
+import Palette from '../Palette/Palette';
 
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
@@ -14,7 +14,7 @@ class App extends Component {
         <Header>
           <Logo />
         </Header>
-        <ColorList className="color-list" colors={colors} />
+        <Palette colors={colors} />
       </div>
     );
   }
