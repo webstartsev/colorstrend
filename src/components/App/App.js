@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 
-import Palette from '../Palette/Palette';
-
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
+import Palette from '../Palette/Palette';
+import AddColorForm from '../AddColorForm/AddColorForm';
 
 import colors from '../../data/colors';
 
 class App extends Component {
   render() {
+    const logColor = (title, color) => {
+      console.log(`TODO: add new ${title} and ${color} to the list`);
+      console.log(`TODO: render UI with new Color`);
+    };
+
     return (
       <div className="App">
         <Header>
           <Logo />
         </Header>
         <Palette colors={colors} />
+        <AddColorForm onNewColor={logColor} />
       </div>
     );
   }
