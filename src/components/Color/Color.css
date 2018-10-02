@@ -41,3 +41,9 @@
   color: #fff;
   font-weight: 200;
 }
+
+.Color__actions {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
