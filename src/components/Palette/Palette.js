@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Palette.css';
 
 import Color from '../Color/Color';
@@ -10,5 +11,9 @@ const Palette = ({ colors = [] }) => (
     ))}
   </div>
 );
+
+Palette.propTypes = {
+  colors: PropTypes.array.isRequired
+};
 
 export default Palette;
