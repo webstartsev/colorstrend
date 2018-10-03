@@ -46,4 +46,17 @@
   position: absolute;
   bottom: 0.5rem;
   left: 0.5rem;
+  display: flex;
+}
+
+.Color__action {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.Color__action_type_like {
+  background: url(./like.svg);
+}
+.Color__action_type_remove {
+  background: url(./close.svg);
 }

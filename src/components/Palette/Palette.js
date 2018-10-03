@@ -4,7 +4,7 @@ import './Palette.css';
 
 import Color from '../Color/Color';
 
-const Palette = ({ colors = [], onRemove = f => f, onLike = f => f }) => (
+const Palette = ({ colors = [], onRemove = f => f, onRate = f => f, onCopy = f => f }) => (
   <div className="Palette">
     {colors.length === 0 ? (
       <p>Цветов нет</p>
@@ -12,7 +12,8 @@ const Palette = ({ colors = [], onRemove = f => f, onLike = f => f }) => (
       colors.map(color => (
         <Color
           onRemove={() => onRemove(color.id)}
-          onLike={like => onLike(color.id, !like)}
+          onRate={() => onRate(color.id)}
+          onCopy={() => onCopy(color.color)}
           key={color.id}
           {...color}
         />

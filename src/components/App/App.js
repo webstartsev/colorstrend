@@ -7,17 +7,20 @@ import Palette from '../Palette/Palette';
 import AddColorForm from '../AddColorForm/AddColorForm';
 import SearchColorForm from '../SearchColorForm/SearchColorForm';
 
-// import colors from '../../data/colors';
+import colorsData from '../../data/colors';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      colors: []
+      colors: colorsData || [],
+      limitRate: 10
     };
+
     this.addColor = this.addColor.bind(this);
-    this.LikeColor = this.LikeColor.bind(this);
+    this.rateColor = this.rateColor.bind(this);
     this.removeColor = this.removeColor.bind(this);
+    this.copyColor = this.copyColor.bind(this);
   }
 
   addColor(title, color) {
@@ -33,14 +36,39 @@ class App extends Component {
     this.setState({ colors });
   }
 
-  LikeColor(id, like) {}
+  rateColor(id) {
+    let { limitRate } = this.state;
+    if (limitRate === 0) {
+      return;
+    }
+    const colors = this.state.colors.map(color => {
+      if (color.id !== id) {
+        return color;
+      } else {
+        const rating = color.rating + 1;
+        return {
+          ...color,
+          rating
+        };
+      }
+    });
+    limitRate--;
+
+    this.setState({ colors, limitRate });
+  }
   removeColor(id) {
     const colors = this.state.colors.filter(color => color.id !== id);
     this.setState({ colors });
   }
+  copyColor(color) {
+    navigator.clipboard.writeText(color).catch(err => {
+      console.log('copyColor went wrong', err);
+    });
+  }
 
   render() {
     const { colors } = this.state;
+    const { addColor, rateColor, removeColor, copyColor } = this;
 
     const logSearch = value => {
       console.log(`TODO: search ${value}`);
@@ -52,8 +80,8 @@ class App extends Component {
           <Logo />
           <SearchColorForm onSearch={logSearch} />
         </Header>
-        <Palette colors={colors} />
-        <AddColorForm onNewColor={this.addColor} />
+        <Palette colors={colors} onRate={rateColor} onRemove={removeColor} onCopy={copyColor} />
+        <AddColorForm onNewColor={addColor} />
       </div>
     );
   }

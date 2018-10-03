@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 
 import './Color.css';
 
-import Like from '../Like/Like';
-
-const Color = ({ title, color, rating = 0, like = false, onRemove = f => f, onLike = f => f }) => (
+const Color = ({
+  title,
+  color,
+  rating = 0,
+  like = false,
+  onRemove = f => f,
+  onRate = f => f,
+  onCopy = f => f
+}) => (
   <div className="Color" style={{ background: color }}>
-    <button className="Color__remove" onClick={onRemove}>
-      X
-    </button>
     <span className="Color__rating">{rating}</span>
-    <a className="Color__copy" href="javascript:;">
+    <a className="Color__copy" href="javascript:;" onClick={onCopy}>
       COPY
     </a>
     <span className="Color__title">{title}</span>
     <div className="Color__actions">
-      <Like selected={like} onLike={onLike} />
+      <div className="Color__action Color__action_type_like" onClick={onRate} />
+      <div className="Color__action Color__action_type_remove" onClick={onRemove} />
     </div>
   </div>
 );

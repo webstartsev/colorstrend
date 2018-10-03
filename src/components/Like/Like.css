@@ -1,8 +1,0 @@
-.Like {
-  background: url(./like.svg);
-  width: 20px;
-  height: 20px;
-}
-.Like_selected {
-  background: url(./like_selected.svg);
-}
