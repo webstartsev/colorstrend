@@ -1,0 +1,12 @@
+.SearchColorFrom {
+  text-align: center;
+  /* width: 80%; */
+  flex-basis: 100%;
+}
+.SearchColorFrom__input {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: 2px solid #afafaf;
+  width: 100%;
+  box-sizing: border-box;
+}

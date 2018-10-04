@@ -1,7 +1,7 @@
 .Color {
   height: 25%;
   flex-basis: 20%;
-  height: 120px;
+  height: 140px;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -47,4 +47,23 @@
   bottom: 0.5rem;
   left: 0.5rem;
   display: flex;
+}
+
+@media screen and (max-width: 900px) {
+  .Color {
+    flex-basis: 25%;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Color {
+    flex-basis: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Color {
+    flex-basis: calc(100% / 2);
+  }
 }

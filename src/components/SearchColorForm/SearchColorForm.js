@@ -8,7 +8,16 @@ const SearchColorForm = ({ onSearch = f => f }) => {
     e.preventDefault();
     onSearch(e.target.value);
   };
-  return <input onChange={onInput} type="text" placeholder="Search color Name || #eee" />;
+  return (
+    <div className="SearchColorFrom">
+      <input
+        className="SearchColorFrom__input"
+        onChange={onInput}
+        type="text"
+        placeholder="Search color name || #eee"
+      />
+    </div>
+  );
 };
 
 SearchColorForm.propTypes = {

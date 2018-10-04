@@ -4,17 +4,21 @@ import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Palette from '../Palette/Palette';
 import SearchColorForm from '../SearchColorForm/SearchColorForm';
+import OpenSource from '../OpenSource/OpenSource';
 
 import colorsData from '../../data/colors';
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.colors = colorsData.sort((a, b) => b.rating - a.rating);
     this.state = {
-      colors: colorsData || [],
-      limitRate: 10
+      colors: this.colors || [],
+      limitRate: 10,
+      topColor: this.colors[0],
+      type: 'hex'
     };
-    this.colors = colorsData;
 
     this.rateColor = this.rateColor.bind(this);
     this.copyColor = this.copyColor.bind(this);
@@ -49,8 +53,12 @@ class App extends Component {
 
   searchColor(value) {
     if (value.length) {
+      value = value.toLowerCase();
       const colors = this.colors.filter(color => {
-        if (color.title.search(value) !== -1 || color.color.search(value) !== -1) {
+        if (
+          color.title.toLowerCase().search(value) !== -1 ||
+          color.color.toLowerCase().search(value) !== -1
+        ) {
           return true;
         }
       });
@@ -61,16 +69,17 @@ class App extends Component {
   }
 
   render() {
-    const { colors } = this.state;
+    const { colors, topColor, type } = this.state;
     const { rateColor, copyColor, searchColor } = this;
 
     return (
       <div className="App">
         <Header>
-          <Logo />
+          <Logo color={topColor.color[type]} />
           <SearchColorForm onSearch={searchColor} />
+          <OpenSource />
         </Header>
-        <Palette colors={colors} onRate={rateColor} onCopy={copyColor} />
+        <Palette colors={colors} type={type} onRate={rateColor} onCopy={copyColor} />
       </div>
     );
   }

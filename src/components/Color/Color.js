@@ -14,9 +14,9 @@ export class Color extends Component {
   }
 
   render() {
-    const { title, rating, color, onRate, onCopy } = this.props;
+    const { title, rating, color, type, onRate, onCopy } = this.props;
     return (
-      <div className="Color" style={{ background: color }}>
+      <div className="Color" style={{ background: color[type] }}>
         <span ref="title" className="Color__rating">
           {rating}
         </span>
