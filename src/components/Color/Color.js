@@ -14,7 +14,7 @@ export class Color extends Component {
   }
 
   render() {
-    const { title, rating, color, onRemove, onRate, onCopy } = this.props;
+    const { title, rating, color, onRate, onCopy } = this.props;
     return (
       <div className="Color" style={{ background: color }}>
         <span ref="title" className="Color__rating">
@@ -26,7 +26,6 @@ export class Color extends Component {
         <span className="Color__title">{title}</span>
         <div className="Color__actions">
           <BtnAction type="like" action={onRate} />
-          <BtnAction type="remove" action={onRemove} />
         </div>
       </div>
     );
@@ -37,7 +36,6 @@ Color.propTypes = {
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   rating: PropTypes.number,
-  onRemove: PropTypes.func,
   onRate: PropTypes.func,
   onCopy: PropTypes.func
 };
@@ -46,7 +44,6 @@ Color.defaultProps = {
   title: 'default',
   color: '#ccc',
   rating: 0,
-  onRemove: f => f,
   onRate: f => f,
   onCopy: f => f
 };

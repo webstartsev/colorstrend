@@ -4,7 +4,6 @@ import { v4 } from 'uuid';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Palette from '../Palette/Palette';
-import AddColorForm from '../AddColorForm/AddColorForm';
 import SearchColorForm from '../SearchColorForm/SearchColorForm';
 
 import colorsData from '../../data/colors';
@@ -17,23 +16,8 @@ class App extends Component {
       limitRate: 10
     };
 
-    this.addColor = this.addColor.bind(this);
     this.rateColor = this.rateColor.bind(this);
-    this.removeColor = this.removeColor.bind(this);
     this.copyColor = this.copyColor.bind(this);
-  }
-
-  addColor(title, color) {
-    const colors = [
-      ...this.state.colors,
-      {
-        id: v4(),
-        title,
-        color,
-        rating: 0
-      }
-    ];
-    this.setState({ colors });
   }
 
   rateColor(id) {
@@ -56,10 +40,6 @@ class App extends Component {
 
     this.setState({ colors, limitRate });
   }
-  removeColor(id) {
-    const colors = this.state.colors.filter(color => color.id !== id);
-    this.setState({ colors });
-  }
   copyColor(color) {
     navigator.clipboard.writeText(color).catch(err => {
       console.log('copyColor went wrong', err);
@@ -68,7 +48,7 @@ class App extends Component {
 
   render() {
     const { colors } = this.state;
-    const { addColor, rateColor, removeColor, copyColor } = this;
+    const { rateColor, copyColor } = this;
 
     const logSearch = value => {
       console.log(`TODO: search ${value}`);
@@ -80,8 +60,7 @@ class App extends Component {
           <Logo />
           <SearchColorForm onSearch={logSearch} />
         </Header>
-        <Palette colors={colors} onRate={rateColor} onRemove={removeColor} onCopy={copyColor} />
-        <AddColorForm onNewColor={addColor} />
+        <Palette colors={colors} onRate={rateColor} onCopy={copyColor} />
       </div>
     );
   }
