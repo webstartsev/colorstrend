@@ -23,7 +23,10 @@ const Palette = ({ colors = [], onRemove = f => f, onRate = f => f, onCopy = f =
 );
 
 Palette.propTypes = {
-  colors: PropTypes.array.isRequired
+  colors: PropTypes.array.isRequired,
+  onRemove: PropTypes.func,
+  onRate: PropTypes.func,
+  onCopy: PropTypes.func
 };
 
 export default Palette;

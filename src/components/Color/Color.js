@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Color.css';
+
+import BtnAction from '../BtnAction/BtnAction';
 
 const Color = ({
   title,
   color,
   rating = 0,
-  like = false,
   onRemove = f => f,
   onRate = f => f,
   onCopy = f => f
@@ -19,8 +20,8 @@ const Color = ({
     </a>
     <span className="Color__title">{title}</span>
     <div className="Color__actions">
-      <div className="Color__action Color__action_type_like" onClick={onRate} />
-      <div className="Color__action Color__action_type_remove" onClick={onRemove} />
+      <BtnAction type="like" action={onRate} />
+      <BtnAction type="remove" action={onRemove} />
     </div>
   </div>
 );
@@ -28,7 +29,10 @@ const Color = ({
 Color.propTypes = {
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  rating: PropTypes.number
+  rating: PropTypes.number,
+  onRemove: PropTypes.func,
+  onRate: PropTypes.func,
+  onCopy: PropTypes.func
 };
 
 export default Color;
