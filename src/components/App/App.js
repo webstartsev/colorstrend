@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { v4 } from 'uuid';
 
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
@@ -15,9 +14,11 @@ class App extends Component {
       colors: colorsData || [],
       limitRate: 10
     };
+    this.colors = colorsData;
 
     this.rateColor = this.rateColor.bind(this);
     this.copyColor = this.copyColor.bind(this);
+    this.searchColor = this.searchColor.bind(this);
   }
 
   rateColor(id) {
@@ -46,19 +47,28 @@ class App extends Component {
     });
   }
 
+  searchColor(value) {
+    if (value.length) {
+      const colors = this.colors.filter(color => {
+        if (color.title.search(value) !== -1 || color.color.search(value) !== -1) {
+          return true;
+        }
+      });
+      this.setState({ colors });
+    } else {
+      this.setState({ colors: this.colors });
+    }
+  }
+
   render() {
     const { colors } = this.state;
-    const { rateColor, copyColor } = this;
-
-    const logSearch = value => {
-      console.log(`TODO: search ${value}`);
-    };
+    const { rateColor, copyColor, searchColor } = this;
 
     return (
       <div className="App">
         <Header>
           <Logo />
-          <SearchColorForm onSearch={logSearch} />
+          <SearchColorForm onSearch={searchColor} />
         </Header>
         <Palette colors={colors} onRate={rateColor} onCopy={copyColor} />
       </div>
