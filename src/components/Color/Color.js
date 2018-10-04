@@ -34,7 +34,7 @@ export class Color extends Component {
 
 Color.propTypes = {
   title: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.object.isRequired,
   rating: PropTypes.number,
   onRate: PropTypes.func,
   onCopy: PropTypes.func

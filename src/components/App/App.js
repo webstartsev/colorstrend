@@ -57,7 +57,7 @@ class App extends Component {
       const colors = this.colors.filter(color => {
         if (
           color.title.toLowerCase().search(value) !== -1 ||
-          color.color.toLowerCase().search(value) !== -1
+          color.color[this.state.type].toLowerCase().search(value) !== -1
         ) {
           return true;
         }

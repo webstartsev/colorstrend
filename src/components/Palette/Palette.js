@@ -8,7 +8,7 @@ import AddColor from '../AddColor/AddColor';
 const Palette = ({ colors = [], type = 'hex', onRate = f => f, onCopy = f => f }) => (
   <div className="Palette">
     {colors.length === 0 ? (
-      <p>Цветов нет</p>
+      <p className="Palette__notfound">Цветов нет</p>
     ) : (
       colors.map(color => (
         <Color
