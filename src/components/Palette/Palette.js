@@ -20,7 +20,7 @@ const Palette = ({ colors = [], type = 'hex', onRate = f => f, onCopy = f => f }
         />
       ))
     )}
-    <AddColor />
+    {colors.length && <AddColor />}
   </div>
 );
 
