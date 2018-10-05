@@ -20,7 +20,7 @@
 }
 .Color__copy {
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   color: #fff;
   text-transform: uppercase;
@@ -29,6 +29,12 @@
   border: 2px solid #fff9;
   padding: 5px 20px;
   border-radius: 5px;
+}
+.Color__copy:hover {
+  padding: 8px 25px;
+}
+.Color__copy:active {
+  transform: scale(0.94);
 }
 .Color:hover .Color__copy {
   opacity: 1;
