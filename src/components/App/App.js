@@ -5,6 +5,7 @@ import Logo from '../Logo/Logo';
 import Palette from '../Palette/Palette';
 import SearchColorForm from '../SearchColorForm/SearchColorForm';
 import OpenSource from '../OpenSource/OpenSource';
+import Types from '../Types/Types';
 
 import colorsData from '../../data/colors';
 
@@ -23,6 +24,7 @@ class App extends Component {
     this.rateColor = this.rateColor.bind(this);
     this.copyColor = this.copyColor.bind(this);
     this.searchColor = this.searchColor.bind(this);
+    this.changeType = this.changeType.bind(this);
   }
 
   rateColor(id) {
@@ -46,7 +48,7 @@ class App extends Component {
     this.setState({ colors, limitRate });
   }
   copyColor(color) {
-    navigator.clipboard.writeText(color).catch(err => {
+    navigator.clipboard.writeText(color[this.state.type]).catch(err => {
       console.log('copyColor went wrong', err);
     });
   }
@@ -68,15 +70,20 @@ class App extends Component {
     }
   }
 
+  changeType(type) {
+    this.setState({ type });
+  }
+
   render() {
     const { colors, topColor, type } = this.state;
-    const { rateColor, copyColor, searchColor } = this;
+    const { rateColor, copyColor, searchColor, changeType } = this;
 
     return (
       <div className="App">
         <Header>
           <Logo color={topColor.color[type]} />
           <SearchColorForm onSearch={searchColor} />
+          <Types changeType={changeType} type={type} />
           <OpenSource />
         </Header>
         <Palette colors={colors} type={type} onRate={rateColor} onCopy={copyColor} />

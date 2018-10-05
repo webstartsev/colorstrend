@@ -13,7 +13,7 @@ const Palette = ({ colors = [], type = 'hex', onRate = f => f, onCopy = f => f }
       colors.map(color => (
         <Color
           onRate={() => onRate(color.id)}
-          onCopy={() => onCopy(color.color[type])}
+          onCopy={() => onCopy(color.color)}
           type={type}
           key={color.id}
           {...color}

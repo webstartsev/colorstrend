@@ -1,0 +1,14 @@
+.Types {
+  display: flex;
+  margin-left: 10px;
+}
+.Types__btn {
+  margin-right: 10px;
+  background: #fff;
+  border: 2px solid #ccc;
+  padding: 5px 30px;
+  cursor: pointer;
+}
+.Types__btn_active {
+  background: #eee;
+}
