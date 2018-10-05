@@ -25,7 +25,8 @@ class App extends Component {
       type: 'hex',
       animate: false,
       color: null,
-      text: 'asd'
+      text: '',
+      showAddColor: false
     };
 
     this.rateColor = this.rateColor.bind(this);
