@@ -9,11 +9,13 @@ import Types from '../Types/Types';
 
 import colorsData from '../../data/colors';
 
+import { sortRate } from '../../helpers/helpers';
+
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.colors = colorsData.sort((a, b) => b.rating - a.rating);
+    this.colors = colorsData.sort(sortRate);
     this.state = {
       colors: this.colors || [],
       limitRate: 10,
