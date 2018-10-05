@@ -6,8 +6,10 @@ import Palette from '../Palette/Palette';
 import SearchColorForm from '../SearchColorForm/SearchColorForm';
 import OpenSource from '../OpenSource/OpenSource';
 import Types from '../Types/Types';
+import SuccessCopy from '../SuccessCopy/SuccessCopy';
 
 import colorsData from '../../data/colors';
+import { success } from '../../data/successCopy';
 
 import { sortRate } from '../../helpers/helpers';
 
@@ -20,7 +22,10 @@ class App extends Component {
       colors: this.colors || [],
       limitRate: 10,
       topColor: this.colors[0],
-      type: 'hex'
+      type: 'hex',
+      animate: false,
+      color: null,
+      text: 'asd'
     };
 
     this.rateColor = this.rateColor.bind(this);
@@ -50,9 +55,16 @@ class App extends Component {
     this.setState({ colors, limitRate });
   }
   copyColor(color) {
-    navigator.clipboard.writeText(color[this.state.type]).catch(err => {
+    const text = success[Math.floor(Math.random() * success.length)];
+    this.setState({ animate: true, text: text, color: color });
+
+    navigator.clipboard.writeText(color.color[this.state.type]).catch(err => {
       console.log('copyColor went wrong', err);
     });
+
+    setTimeout(() => {
+      this.setState({ animate: false });
+    }, 1500);
   }
 
   searchColor(value) {
@@ -77,11 +89,12 @@ class App extends Component {
   }
 
   render() {
-    const { colors, topColor, type } = this.state;
+    const { colors, topColor, type, animate, color, text } = this.state;
     const { rateColor, copyColor, searchColor, changeType } = this;
 
     return (
       <div className="App">
+        {animate && <SuccessCopy color={color} text={text} type={type} />}
         <Header>
           <Logo color={topColor.color[type]} />
           <SearchColorForm onSearch={searchColor} />
